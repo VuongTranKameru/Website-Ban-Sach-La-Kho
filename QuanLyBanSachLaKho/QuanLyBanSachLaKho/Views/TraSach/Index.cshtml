@@ -1,0 +1,81 @@
+﻿@model IEnumerable<QuanLyBanSachLaKho.Models.DonHang>
+
+@{
+    ViewBag.Title = "Danh Sách Trả Sách";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>QUẢN LÝ TRẢ SÁCH CỦA ĐỘC GIẢ</h2>
+
+<div style="padding-bottom:10px;">
+    <a class="btn btn-light" href='@Url.Action("Create", "Sach")' role="button">
+        + Lập Phiếu Trả Sách
+    </a>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <tr class="bg-warning">
+            <th>
+                Mã Mượn Sách
+            </th>
+            <th>
+                Mã Độc Giả
+            </th>
+            <th>
+                Tên Độc Giả
+            </th>
+            <th>
+                Ngày Mượn Sách
+            </th>
+            <th class="col-2">
+                Ngày Hết Hạn
+            </th>
+            <th class="col-2">
+                Ngày Trả Sách
+            </th>
+            <th>
+                Tiền Phạt
+            </th>
+            <th>
+                Tổng Nợ
+            </th>
+            <th class="col-1"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="alert-warning">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDH)
+                </td>
+                <td>
+                    @DateTime.Now
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaDH)
+                </td>
+                <td>
+                    <a href='@Url.Action("Details", "DonHang", new { id = item.MaDH })'>
+                        <i class="icon icon-wrap nalika-info"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
